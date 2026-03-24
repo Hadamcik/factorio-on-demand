@@ -122,6 +122,28 @@ WantedBy=multi-user.target
 - `sudo systemctl enable factorio-watcher`
 - `sudo systemctl start factorio-watcher`
 
+### Suspend / Resume Handling
+
+When the machine suspends, both the watcher and Factorio server must be stopped cleanly, and started again on resume.
+
+Create a systemd sleep hook:
+1. Create a systemd sleep hook: `sudo nano /usr/lib/systemd/system-sleep/factorio-sleep`
+```bash
+#!/bin/sh
+
+case "$1" in
+pre)
+/usr/bin/systemctl stop factorio-watcher.service
+/usr/bin/systemctl stop factorio.service
+;;
+post)
+/usr/bin/systemctl start factorio.service
+/usr/bin/systemctl start factorio-watcher.service
+;;
+esac
+```
+2. Make it executable `sudo chmod +x /usr/lib/systemd/system-sleep/factorio-sleep`
+
 ---
 
 ## Dashboard machine
