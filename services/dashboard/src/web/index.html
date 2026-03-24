@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Factorio Wake Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="card">
+    <div class="title">Factorio Wake Dashboard</div>
+
+    <div class="status-grid">
+        <div class="status-box">
+            <div class="status-label">Machine</div>
+            <div id="machineStatus" class="status offline">Offline</div>
+        </div>
+
+        <div class="status-box">
+            <div class="status-label">Factorio</div>
+            <div id="factorioStatus" class="status offline">Offline</div>
+        </div>
+    </div>
+
+    <div class="top-actions">
+        <button id="wakeBtn" class="wake-btn">Wake server</button>
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-card">
+            <div class="label">Last wake result</div>
+            <div id="wakeResult" class="mono">—</div>
+        </div>
+
+        <div class="meta-card">
+            <div class="label">Wake timer</div>
+            <div id="wakeTimer" class="mono">—</div>
+        </div>
+    </div>
+</div>
+
+<div class="card sessions-card">
+    <div class="title">Recent Sessions</div>
+
+    <div id="sessionsLoading" class="muted">Loading sessions…</div>
+    <div id="sessionsEmpty" class="muted hidden">No sessions yet.</div>
+    <div id="sessionsList" class="sessions-list"></div>
+
+    <div class="pagination">
+        <button id="prevSessionsBtn">Previous</button>
+        <div id="sessionsPageInfo" class="page-chip mono">Page 1</div>
+        <button id="nextSessionsBtn">Next</button>
+    </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
